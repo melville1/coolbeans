@@ -20,8 +20,8 @@ class Addressee(models.Model):
     name = models.CharField(max_length=30)
     address = models.CharField(max_length=70)
     city = models.CharField(max_length=30)
-    state = models.CharField(max_length=2)
-    zipcode = models.IntegerField(max_length=5)
+    state = models.CharField(max_length=30)
+    zipcode = models.IntegerField()
 
     # What is this here for?  
     # def __str__(self): 
@@ -39,8 +39,8 @@ class Order(models.Model):
     total_price = models.FloatField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
-    is_confirmed = models.BooleanField(default=False)
-    # order_quantity = models.IntegerField(null=True)
+    order_quantity = models.IntegerField(null=True)
+    products = models.ManyToManyField(Product)
 
 class ProductsInOrder:
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
