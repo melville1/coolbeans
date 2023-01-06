@@ -11,8 +11,8 @@ class Product(models.Model):
     order_quantity = models.IntegerField(null=True)
 
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
       
 
 # addressee indicates the recipient of the order not necessarily the person placing the order.
@@ -23,8 +23,9 @@ class Addressee(models.Model):
     state = models.CharField(max_length=2)
     zipcode = models.IntegerField(max_length=5)
 
-    def __str__(self):
-        return self.name
+    # What is this here for?  
+    # def __str__(self): 
+    #     return self.name
 
 
 class Order(models.Model):
