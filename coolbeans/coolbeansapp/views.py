@@ -6,3 +6,19 @@ from django.views import View
 class HomeView(View):
     def get(self, request):
         pass
+
+class OrderView(View):
+    def get(self, request):
+        pass
+
+class ConfirmationView(View):
+    def get(self, request):
+        pass
+
+class ReceiptView(View):
+    def get(self, request):
+        pass
+
+class ProductView(View):
+    def get(self, request):
+        pass
