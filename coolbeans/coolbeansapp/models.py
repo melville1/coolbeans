@@ -11,20 +11,21 @@ class Product(models.Model):
     order_quantity = models.IntegerField(null=True)
 
 
-    def __str__(self):
-        return self.name
+    # def __str__(self):
+    #     return self.name
       
 
 # addressee indicates the recipient of the order not necessarily the person placing the order.
 class Addressee(models.Model):
-    addressee = models.CharField(max_length=30)
+    name = models.CharField(max_length=30)
     address = models.CharField(max_length=70)
     city = models.CharField(max_length=30)
-    state = models.CharField(max_length=30)
+    state = models.CharField(max_length=2)
     zipcode = models.IntegerField()
 
-    def __str__(self):
-        return self.addressee
+    # What is this here for?  
+    # def __str__(self): 
+    #     return self.name
 
 
 class Order(models.Model):
@@ -33,11 +34,16 @@ class Order(models.Model):
         ('Out for delivery','Out for delivery'),
         ('Delivered','Delivered'),)
     
-    
-    
+    cart_items = models.ManyToManyField(Product, through="ProductsInOrder")
     addressee = models.ForeignKey(Addressee,on_delete=models.SET_NULL,null=True)
     total_price = models.FloatField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
-    order_quantity = models.IntegerField(null=True)
-    products = models.ManyToManyField(Product)
+    is_confirmed = models.BooleanField(default=False)
+
+
+
+class ProductsInOrder(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+    order = models.ForeignKey(Order,on_delete=models.CASCADE)
+    quantity = models.IntegerField()
