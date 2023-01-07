@@ -39,9 +39,10 @@ class Order(models.Model):
     total_price = models.FloatField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
- 
+    order_quantity = models.IntegerField(null=True)
+    products = models.ManyToManyField(Product)
 
-class ProductsInOrder(models.Model):
+class ProductsInOrder:
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     quantity = models.IntegerField()
