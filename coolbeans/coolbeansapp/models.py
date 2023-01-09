@@ -42,7 +42,7 @@ class Order(models.Model):
     order_quantity = models.IntegerField(null=True)
     products = models.ManyToManyField(Product)
 
-class ProductsInOrder:
+class ProductsInOrder(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     quantity = models.IntegerField()
