@@ -41,7 +41,7 @@ class Order(models.Model):
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     is_confirmed = models.BooleanField(default=False)
 
-class ProductsInOrder:
+class ProductsInOrder(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     quantity = models.IntegerField()
