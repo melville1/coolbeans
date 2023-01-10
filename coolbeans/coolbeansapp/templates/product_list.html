@@ -1,12 +1,31 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h2>  Menu</h2>
-    
-</body>
-</html>
+{% extends 'main.html' %}
+   {% block content %}
+   <h1> Products </h1>
+      <div class="container">
+      <div class="row">
+      <ul>
+      <!-- Iterate over object_list -->
+      {% for products in product_list %}
+      <div class="container">
+         <div class="row">
+     
+            <div class="card bg-secondary">
+               {% comment %}
+               {% if %} <li><img src="{{products.image.url }}" height="300px", width="400px"> </li> 
+               {% elif %}<li><h1> {{ products.id}}</h1></li>
+               {% endif %} {% endcomment %}
+               <div class="card-body">
+                  <li><h2 class="card-title">{{ products.name }}<h2></li>
+                  <li class="card-text"> {{ products.description }}></li>
+                  <div class="card-footer">
+                      <li><h5 class="float-end"> ${{ products.price }}0 per lb.</h5></li>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      
+      {% endfor %}
+
+   </ul>
+   {% endblock %}
