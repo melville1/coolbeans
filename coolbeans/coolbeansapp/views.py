@@ -13,9 +13,9 @@ class HomeView(View):
 
         
         return render(
-        request= request,
-        template_name= "home.html",
-        context= {}
+            request= request,
+            template_name= "home.html",
+            context= {}
         )
     
 
@@ -33,7 +33,7 @@ class OrderView(View):
         total = 0
         for product in products:
             total += product.price
-        total = round(total,2)
+            total = round(total,2)
         # # print(total)
         # get_quantity_and_product
         
@@ -54,9 +54,9 @@ class OrderView(View):
 
 
         return render(
-        request= request,
-        template_name= "order.html",
-        context= html_data
+            request= request,
+            template_name= "order.html",
+            context= html_data
         )
     # def post(self,request):
     #     product_form = ProductsInOrderForm(request.POST)
@@ -71,9 +71,9 @@ class ConfirmationView(View):
         
         
         return render(
-        request= request,
-        template_name= "confirmation.html",
-        context= {}
+            request= request,
+            template_name= "confirmation.html",
+            context= {}
         )
 
 class ReceiptView(View):
@@ -82,10 +82,14 @@ class ReceiptView(View):
 
 class ProductView(View):
     def get (self,request):
-        
-        
+        # getting all objects from talbe Product
+        products = Product.objects.all()
+        # exportiing that data to a dictionary so the django template can interpret it
+        html_data = {
+            "product_list": products
+        }
         return render(
-        request= request,
-        template_name= "product_list.html",
-        context= {}
+            request= request,
+            template_name= "product_list.html",
+            context= html_data
         )
