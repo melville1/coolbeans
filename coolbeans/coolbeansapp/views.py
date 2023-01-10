@@ -20,7 +20,7 @@ class HomeView(View):
     
 
 class OrderView(View):
-    def get (self,request,id):
+    def get (self,request,):
 
         ProductsForm = ProductsInOrderForm()
         
@@ -65,7 +65,7 @@ class OrderView(View):
     #     redirect('confirmation')
 
 class ConfirmationView(View):
-    def get (self,request,id):
+    def get (self,request,):
         # order = Order.objects.get(id=)
 
         
@@ -78,7 +78,12 @@ class ConfirmationView(View):
 
 class ReceiptView(View):
     def get(self, request):
-        pass
+           
+           return render(
+        request= request,
+        template_name= "receipt.html",
+        context= {}
+        )
 
 class ProductView(View):
     def get (self,request):
@@ -87,5 +92,14 @@ class ProductView(View):
         return render(
         request= request,
         template_name= "product_list.html",
+        context= {}
+        )
+
+class OrderHistoryView(View):
+    def get (self, request):
+              
+        return render(
+        request= request,
+        template_name= "orderhistory.html",
         context= {}
         )
