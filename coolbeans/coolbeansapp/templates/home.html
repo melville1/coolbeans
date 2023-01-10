@@ -1,0 +1,21 @@
+
+    {% extends 'main.html'%}
+      
+    
+    
+    {% block content%}
+    <h2> Welcome to CoolBeans </h2>
+      
+      
+        
+      
+    
+        <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            
+            <a class="btn btn-primary btn-lg" href="{% url 'order' %}">Place Order</a>
+          </div>
+        </div>
+      </div>
+      {% endblock %}
