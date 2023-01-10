@@ -4,8 +4,18 @@ from django.views import View
 # Create your views here.
 
 class HomeView(View):
-    def get(self, request):
-        pass
+    def get (self,request):
+
+        
+
+
+        
+        return render(
+        request= request,
+        template_name= "home.html",
+        context= {}
+        )
+    
 
 class OrderView(View):
     def get(self, request):
@@ -20,5 +30,11 @@ class ReceiptView(View):
         pass
 
 class ProductView(View):
-    def get(self, request):
-        pass
+    def get (self,request):
+        
+        
+        return render(
+        request= request,
+        template_name= "product_list.html",
+        context= {}
+        )
