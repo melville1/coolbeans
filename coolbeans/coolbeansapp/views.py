@@ -20,7 +20,7 @@ class HomeView(View):
     
 
 class OrderView(View):
-    def get (self,request,id):
+    def get (self,request,):
 
         ProductsForm = ProductsInOrderForm()
         
@@ -65,7 +65,7 @@ class OrderView(View):
     #     redirect('confirmation')
 
 class ConfirmationView(View):
-    def get (self,request,id):
+    def get (self,request,):
         # order = Order.objects.get(id=)
 
         
