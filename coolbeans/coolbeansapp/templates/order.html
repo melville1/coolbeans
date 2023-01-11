@@ -34,7 +34,10 @@
                 <div class="px-lg-5 mr-lg-5" id=""></div>
                 <!-- <div class="px-lg-5 ml-lg-3" id="total">TOTAL</div> -->
             </div>
-            {% for product in products %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                
+           
             <div class="d-flex flex-row justify-content-between align-items-center pt-lg-4 pt-2 pb-3 border-bottom mobile">
                 <div class="d-flex flex-row align-items-center">
                     <div><img src="{{ product.image.url }}" width="150" height="150" alt="" id="image"></div>
@@ -50,16 +53,18 @@
                 <div class="pl-md-0 pl-2">
                     <span class="fa fa-minus-square text-secondary"></span><span class="px-md-3 px-1"></span><span class="fa fa-plus-square text-secondary"></span>
                 </div>
-                <form method="POST" action="">
-                    {% csrf_token %}
-                    {{ProductsForm}}
+                     
+                    {{testform}}
+                    {{formset.as_p}}
+                    
                     <!-- <input type="submit" name="create" value="Create" /> -->
-                </form>
+               
                 <div class="pl-md-0 pl-1"><b><span class="pl-md-4">{{quantity_total}}</span></b></div>
                 <!-- <div class="close">&times;</div> -->
             </div>
-            {% endfor %}
-         
+            
+            
+        </form>
         </div>
     </div>
 </div>
@@ -73,9 +78,13 @@
                 <div class="px-md-0 px-1" id="footer-font">
                     <b class="pl-md-4">TOTAL COST $<span class="pl-md-4">{{total}}</span></b>
                 </div>
-                <div>
-                    <a class="btn btn-sm bg-dark text-white px-lg-5 px-3" href="{% url 'confirmation' %}">Purchase Order</a>
-                </div>
+                <form method="POST" action="{% url 'order' %}">
+                    {% csrf_token %}
+                    
+                    <input type="submit" name="Purchase" value="Purchase Order" />
+                
+                </form>
+                
             </div>
         </div>
     </div>
