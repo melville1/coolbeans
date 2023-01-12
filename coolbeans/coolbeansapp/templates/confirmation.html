@@ -1,0 +1,46 @@
+{% extends 'main.html'%}
+
+{% block content %}
+
+<h2> Please Confirm your Order </h2>
+
+<p>  </p>
+
+<div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h1>Thank you {{order.addressee.name}}</h1>
+        <table class="table table-sm">
+          <tr>
+            <th>product</th>
+            <th>date</th>
+            <th>status</th>
+            <th>quantity</th>
+          </tr>
+          {% for item in items %}
+          <tr>
+            <td>{{item.product}}</td>
+            <td>{{item.quantity}}</td>
+            
+          </tr>
+          {% endfor %}
+        </table>
+
+        <form method="POST">
+          {% csrf_token %}
+          
+          {{ formset.as_p }}
+        
+        
+        <input type="submit" name="delete" value="Delete" /> 
+      </form>
+
+
+        
+        <a class="btn btn-primary btn-lg" href="{% url 'receipt' %}">Confirm Purchase</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'editorder' order.id %}">Edit Order</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock%}
