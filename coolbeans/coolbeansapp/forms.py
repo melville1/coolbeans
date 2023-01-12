@@ -1,8 +1,12 @@
-from django.forms import ModelForm 
-from coolbeansapp.models import ProductsInOrder
+from django.forms import ModelForm
+from coolbeansapp.models import  Order,OrderItem
 
-class ProductsInOrderForm(ModelForm):
+
+
+
+
+class OrderItemForm(ModelForm):
     class Meta:
-        model = ProductsInOrder
-        fields = {'quantity'}
+        model = OrderItem
+        fields = ['product', 'quantity']
 
