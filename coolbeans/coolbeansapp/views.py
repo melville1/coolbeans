@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.views import View
-from coolbeansapp.models import Product,Order, Addressee, ProductsInOrder
+from coolbeansapp.models import Product, Order, Addressee, ProductsInOrder
 from coolbeansapp.forms import ProductsInOrderForm
 # Create your views here.
 
