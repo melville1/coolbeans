@@ -14,9 +14,9 @@ class HomeView(View):
 
         
         return render(
-        request= request,
-        template_name= "home.html",
-        context= {}
+            request= request,
+            template_name= "home.html",
+            context= {}
         )
 
 class OrderView(View):
@@ -42,6 +42,7 @@ class OrderView(View):
         context= html_data
         )
 
+
     def post(self,request,id):
         OrderFormset = inlineformset_factory(Order,OrderItem, fields=['product','quantity'])
         addressee = Addressee.objects.get(id=id) # retrieveing a specific addressee
@@ -50,6 +51,7 @@ class OrderView(View):
         if formset.is_valid():
             formset.save()
         return redirect('confirmation', order.id )
+
 
 
 class EditView(View):
@@ -65,9 +67,9 @@ class EditView(View):
 
 
         return render(
-        request= request,
-        template_name= "order.html",
-        context= html_data
+            request= request,
+            template_name= "order.html",
+            context= html_data
         )
 
        
@@ -112,29 +114,28 @@ class ConfirmationView(View):
        
 
             
-        
-       
-
-
-
 class ReceiptView(View):
     def get (self,request):
         
-        
         return render(
-        request= request,
-        template_name= "receipt.html",
-        context= {}
-        )
+          request= request,
+          template_name= "receipt.html",
+          context= {} 
+          )
 
 
 
 class ProductView(View):
     def get (self,request):
-        
-        
+        # getting all objects from talbe Product
+        products = Product.objects.all()
+        # exportiing that data to a dictionary so the django template can interpret it
+        html_data = {
+            "product_list": products
+        }
         return render(
-        request= request,
-        template_name= "menu.html",
-        context= {}
+            request= request,
+            template_name= "product_list.html",
+            context= html_data
+
         )
