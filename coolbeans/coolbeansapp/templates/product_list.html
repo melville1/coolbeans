@@ -1,30 +1,39 @@
 {% extends 'main.html' %}
    {% block content %}
-   <h1> Products </h1>
-      <ul>
-      <!-- Iterate over objec productt_list and displaying what -->
-      {% for products in product_list %}
-      <div class="container m-5">
-         <div class="row">
-     
-            <div class="card p-5">
-               {% comment %}
-               <li><img src="{{products.image.url }}" height="300px", width="400px"> </li> 
-               
-               {% endcomment %}
-               <div class="card-body">
-                  <li><h2 class="card-title">{{ products.name }}<h2></li>
-                  <li class="card-text"> {{ products.description }}></li>
-                  <div class="card-footer">
-                      <li><h5 class="float-end"> ${{ products.price }}0 per lb.</h5></li>
-                  </div>
-               </div>
-            </div>
-         </div>
+   {% load static %}
+   <div class="bg-image" style="background-image: url({% static 'austin-park-vbi3LFdaQtI-unsplash.jpg' %}); flex: 1 1 auto;">
+
+      <div class="text-black bg-white text-center">
+         <h1> Products </h1>
       </div>
       
-      {% endfor %}
+         <div class="container m-5">
+            <div class="flex-row">
+     
+      <ul> <!-- Iterate over objec productt_list and displaying what -->
+         {% for products in product_list %}
+               <div class="m-5 px-5">
+                  <div class="card p-5n flex-row">
+                  <img class="card-img" src="{% static 'mike-kenneally-TD4DBagg2wE-unsplash.jpg'%}" height="300px", width="400px"> 
+                     <div class="card-body">
+                        <li><h2 class="card-title mb-5">{{ products.name }}<h2></li>
+                        <li><p class="card-text mx-5 "> {{ products.description }}></p></li>
+                        <div class="d-flex justify-content-around mt-3">
 
+                              <div class="p2 card-footer">
+                                 <div class="p-2">
+                                    <div class="p-2">
+                                       <li><h5 class="float-end"> ${{ products.price }}0 per lb.</h5></li>
+                                    </div>
+                                 </div> 
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div> 
+      {% endfor %}
+            </div>
+         </div>
       </ul>
-   <h5> We're alway adding new products so check back soon!<h5>
    {% endblock %}

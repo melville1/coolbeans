@@ -1,5 +1,5 @@
 from django.urls import path
-from coolbeansapp.views import HomeView, OrderView, ConfirmationView, ReceiptView, ProductView
+from coolbeansapp.views import HomeView, OrderView, ConfirmationView, ReceiptView, ProductView, AboutView   
 
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('confirmation', ConfirmationView.as_view(), name='confirmation'),
     path('order/<int>', ReceiptView.as_view(), name='receipt' ),
     path('products/', ProductView.as_view(), name = 'product_list'),
-]
+    path('about/', AboutView.as_view(), name ="about")
+    ]
