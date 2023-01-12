@@ -43,8 +43,17 @@ class Order(models.Model):
     total_price = models.FloatField(null=True)
     date = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=200, null=True, choices=STATUS)
+    
+    def get_total(self):
+        orderitems = self.productsinorder_set.all()
+        total = sum([item.get_total for item in orderitems])
+        return total
 
 class ProductsInOrder(models.Model):
     product = models.ForeignKey(Product,on_delete=models.CASCADE)
     order = models.ForeignKey(Order,on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
+    def get_total(self):
+        total = self.product.price * self.quantity
+        return total

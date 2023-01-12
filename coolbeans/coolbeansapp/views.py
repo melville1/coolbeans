@@ -77,8 +77,23 @@ class ConfirmationView(View):
         )
 
 class ReceiptView(View):
-    def get(self, request):
-        pass
+    def get(self, request, receipt):
+        # I need to pull the most recent order number and products in order
+        recent_order = Order.objects.get(id=receipt)
+        recent_products = ProductsInOrder.objects.filter(order=receipt)
+        all_products = Product.objects.all()
+        total_price = recent_order.get_total() 
+        
+        # for contents in recent_products:
+        #     if recent_products.product == all_products.pk:
+        #         total_price = recent_products.quantity * all_products.price 
+        #     else: 
+        #         break
+
+            
+
+
+        
 
 class ProductView(View):
     def get (self,request):
