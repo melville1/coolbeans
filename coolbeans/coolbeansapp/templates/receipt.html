@@ -1,11 +1,18 @@
-{% extends 'main.html'%}
 
+{% extends 'main.html' %}
 
-{% block content %}
+{% block content%}
 
+{% load static %} 
 
-<h2> your order has been placed </h2>
+<h1>Receipt</h1>
 
+<h2>{{order.id}}</h2>
 
+<h2>{{order.date}}</h2>
 
-{% endblock%}
+<h2>{{order.status}}</h2>
+
+<h2></h2>
+
+{% endblock %}

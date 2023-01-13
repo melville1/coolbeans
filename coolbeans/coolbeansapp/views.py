@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from coolbeansapp.models import Product,Order, Addressee,OrderItem
+from coolbeansapp.models import Product, Order, Addressee, OrderItem
 from .forms import OrderItemForm
 from django.forms import inlineformset_factory
 
@@ -115,21 +115,33 @@ class ConfirmationView(View):
 
             
 class ReceiptView(View):
-    def get (self,request):
-        
+    def get(self, request, receipt):
+        # I need to pull the most recent order number and products in order
+        viewed_order = Order.objects.get(id=receipt)
+        viewed_products = OrderItem.objects.filter(order=receipt)
+        all_products = Product.objects.all()
+        total_price = viewed_order.get_total() 
+
+        html_data = { 
+            'viewed_order' : viewed_order,
+            'viewed_products' : viewed_products,
+            'total_price' : total_price,
+        }
+
         return render(
-          request= request,
-          template_name= "receipt.html",
-          context= {} 
-          )
+            request =  request,
+            template_name='receipt.html',
+            context=html_data
+        ) 
+       
 
 
 
 class ProductView(View):
     def get (self,request):
-        # getting all objects from talbe Product
+        # getting all objects from Product Table
         products = Product.objects.all()
-        # exportiing that data to a dictionary so the django template can interpret it
+        # exporting that data to a dictionary so the django template can interpret it
         html_data = {
             "product_list": products
         }
