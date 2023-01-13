@@ -1,6 +1,7 @@
 {% extends 'main.html' %}
    {% block content %}
    {% load static %}
+
    <div class="bg-image" style="background-image: url({% static 'austin-park-vbi3LFdaQtI-unsplash.jpg' %}); flex: 1 1 auto;">
 
       <div class="text-black bg-white text-center">
@@ -10,7 +11,7 @@
          <div class="container m-5">
             <div class="flex-row">
      
-      <ul> <!-- Iterate over objec productt_list and displaying what -->
+      <ul style="text-decoration=none;"> <!-- Iterate over objec productt_list and displaying what -->
          {% for products in product_list %}
                <div class="m-5 px-5">
                   <div class="card p-5n flex-row">
@@ -20,9 +21,15 @@
                         <li><p class="card-text mx-5 "> {{ products.description }}></p></li>
                         <div class="d-flex justify-content-around mt-3">
 
-                              <div class="p2 card-footer">
+                              <div class="d-flex justify-content-between card-footer">
                                  <div class="p-2">
                                     <div class="p-2">
+                                       <li> <h5 class="float-start">Available to be roasted in: </h5></li>
+                                       <span>
+                                       {% for tag in products.types.all %}
+                                          <label> {{tag}} </label>
+                                          {% endfor %}
+                                       </span> </li>   
                                        <li><h5 class="float-end"> ${{ products.price }}0 per lb.</h5></li>
                                     </div>
                                  </div> 

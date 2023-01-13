@@ -1,14 +1,14 @@
 {% extends 'main.html'%}
 
-<!-- {% load static %} -->
-
+{% load static %} 
 
 
 
 {% block content %}
    <h2>Please Place Your Order</h2>
    <form method="post" enctype="multipart/form-data">
-       {{ formset.as_p}}
+       {{ form.as_p }}
+        {{ formset.as_p}}
        {% csrf_token %}
        <button type="submit" >Purchase Order</button>
    </form>

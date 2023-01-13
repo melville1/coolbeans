@@ -5,7 +5,7 @@ class Tag(models.Model):
     type = models.CharField(max_length=30)
 
     def __str__(self):
-            return self.type
+        return self.type
     
     
       
@@ -44,13 +44,14 @@ class Order(models.Model):
     status = models.CharField(max_length=200, null=True, choices=STATUS, default='pending')
     
     def get_order_items(self):
-        orderitems = self.orderitem_set.all()
-        total = sum([item.quantity for item in orderitems])
-        return total 
+        return self.orderitem_set.all()
+  
 
     def get_total(self):
-        orderitems = self.productsinorder_set.all()
-        total = sum([item.get_total for item in orderitems])
+        orderitems = self.orderitem_set.all()
+        total = 0
+        for item in orderitems:
+            total += item.product.price * item.quantity
         return total
 
 

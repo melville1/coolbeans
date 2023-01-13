@@ -37,7 +37,7 @@
 
 
         
-        <a class="btn btn-primary btn-lg" href="{% url 'receipt' %}">Confirm Purchase</a>
+        <a class="btn btn-primary btn-lg" href="{% url 'receipt' order.id %}">Confirm Purchase</a>
         <a class="btn btn-primary btn-lg" href="{% url 'editorder' order.id %}">Edit Order</a>
       </div>
     </div>

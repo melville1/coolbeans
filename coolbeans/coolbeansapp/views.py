@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from coolbeansapp.models import Product, Order, Addressee, OrderItem
-from .forms import OrderItemForm
+from coolbeansapp.models import Product, Order, Addressee, OrderItem, Tag
+from .forms import OrderItemForm, OrderForm
 from django.forms import inlineformset_factory
 
 
@@ -23,16 +23,17 @@ class OrderView(View):
    
     
 
-    def get (self,request,id):
+    def get (self,request):
                                     # The orders will be associated with table Addressee
                                     # second arguments specifies which table it will use to make forms
         OrderItemFormset = inlineformset_factory(Order,OrderItem, fields=['product','quantity'])
     
         formset = OrderItemFormset()
-
+        form = OrderForm()
        
         html_data ={ 
-            'formset':formset
+            'formset':formset,
+            'form': form
             }
 
 
@@ -43,9 +44,10 @@ class OrderView(View):
         )
 
 
-    def post(self,request,id):
+    def post(self,request):
         OrderFormset = inlineformset_factory(Order,OrderItem, fields=['product','quantity'])
-        addressee = Addressee.objects.get(id=id) # retrieveing a specific addressee
+        Customer = request.POST["addressee"]
+        addressee = Addressee.objects.get(id=Customer) # retrieveing a specific addressee
         order = Order.objects.create(addressee=addressee)
         formset = OrderFormset(request.POST, instance=order)
         if formset.is_valid():
@@ -115,16 +117,15 @@ class ConfirmationView(View):
 
             
 class ReceiptView(View):
-    def get(self, request, receipt):
+    def get(self, request, id):
         # I need to pull the most recent order number and products in order
-        viewed_order = Order.objects.get(id=receipt)
-        viewed_products = OrderItem.objects.filter(order=receipt)
-        all_products = Product.objects.all()
+        viewed_order = Order.objects.get(id=id)
+        viewed_products = OrderItem.objects.filter(order=viewed_order)
         total_price = viewed_order.get_total() 
 
         html_data = { 
-            'viewed_order' : viewed_order,
-            'viewed_products' : viewed_products,
+            'order' : viewed_order,
+            'items' : viewed_products,
             'total_price' : total_price,
         }
 
@@ -141,9 +142,15 @@ class ProductView(View):
     def get (self,request):
         # getting all objects from Product Table
         products = Product.objects.all()
-        # exporting that data to a dictionary so the django template can interpret it
+        # tags = []
+        # Tag.objects.filter()
+        #ing that data to a dictionary so the django template can interpret it
+        for product in products:
+            print(product.types.all())
+
         html_data = {
-            "product_list": products
+            "product_list": products,
+            
         }
         return render(
             request= request,
