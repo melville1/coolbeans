@@ -1,4 +1,5 @@
 from django.urls import path
+
 from coolbeansapp.views import HomeView, OrderView, ConfirmationView, ReceiptView, ProductView, EditView
 
 urlpatterns = [
@@ -8,5 +9,6 @@ urlpatterns = [
     path('editorder/<int:id>', EditView.as_view(), name='editorder' ),
     path('order/<int:receipt', ReceiptView.as_view(), name='receipt' ),
     path('products', ProductView.as_view(), name = 'product_list'),
-    ]
+    path('about/', AboutView.as_view(), name ='about')
+   ]
 

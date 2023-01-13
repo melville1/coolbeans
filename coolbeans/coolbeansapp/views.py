@@ -150,4 +150,11 @@ class ProductView(View):
             template_name= "product_list.html",
             context= html_data
 
+
+class AboutView(View):
+    def get (self,request):
+        return render(
+            request= request,
+            template_name= "about.html",
+            context= {}
         )
