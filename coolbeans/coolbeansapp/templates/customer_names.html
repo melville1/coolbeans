@@ -1,0 +1,25 @@
+{% extends 'main.html'%}
+{% block title %}
+  Customer Names
+{% endblock title %}
+{% block content %}
+  <center>
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <h3>{{customer.name}}</h3>
+          
+          <table class="table table-sm">
+            {% for customer in customers %}
+            <tr>
+              <td><a class="order-list" href="{% url 'order_history' customer.id %}" >{{customer.name}}</a></td>            
+            </tr>
+            {% endfor %}
+          </table>
+          
+        </div>
+      </div>
+    </div>
+  </center>
+  
+{% endblock%}
