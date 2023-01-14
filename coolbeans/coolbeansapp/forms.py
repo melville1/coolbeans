@@ -10,3 +10,11 @@ class OrderItemForm(ModelForm):
         model = OrderItem
         fields = ['product', 'quantity']
 
+
+
+
+
+class OrderForm(ModelForm):
+    class Meta:
+        model = Order
+        fields = ['addressee']

@@ -1,0 +1,244 @@
+[
+{
+  "model": "coolbeansapp.tag",
+  "pk": 1,
+  "fields": {
+    "type": "Dark Roast"
+  }
+},
+{
+  "model": "coolbeansapp.tag",
+  "pk": 2,
+  "fields": {
+    "type": "Medium Roast"
+  }
+},
+{
+  "model": "coolbeansapp.tag",
+  "pk": 3,
+  "fields": {
+    "type": "Light Roast"
+  }
+},
+{
+  "model": "coolbeansapp.tag",
+  "pk": 4,
+  "fields": {
+    "type": "Blonde Roast"
+  }
+},
+{
+  "model": "coolbeansapp.tag",
+  "pk": 5,
+  "fields": {
+    "type": "White Roast"
+  }
+},
+{
+  "model": "coolbeansapp.addressee",
+  "pk": 1,
+  "fields": {
+    "name": "Coffee Hut on 168th",
+    "address": "624 W. 168th Street",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": 10027
+  }
+},
+{
+  "model": "coolbeansapp.addressee",
+  "pk": 2,
+  "fields": {
+    "name": "Coffee Hut Times Square",
+    "address": "13 Times Square",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": 10036
+  }
+},
+{
+  "model": "coolbeansapp.addressee",
+  "pk": 3,
+  "fields": {
+    "name": "Coffee Hut LES",
+    "address": "17 Essex St",
+    "city": "New York",
+    "state": "NY",
+    "zipcode": 10011
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 1,
+  "fields": {
+    "name": "Tanzania Peaberry",
+    "description": "Has a taste that is deep and rich, often revealing hints of black currant which soften to chocolate and then blend into the coffee's lingering, sweet finish.",
+    "image": "",
+    "price": 45.0,
+    "types": [2,3,4]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 2,
+  "fields": {
+    "name": "Jamaican Island Blue",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 17.0,
+    "types": [1,3,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 3,
+  "fields": {
+    "name": "Panama Geisha",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 21.0,
+    "types": [1,2]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 4,
+  "fields": {
+    "name": "South African Racemosa Coffee",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 15.0,
+    "types": [3,4,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 5,
+  "fields": {
+    "name": "Malaysian Old Town White",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 23.0,
+    "types": [1,2,3]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 6,
+  "fields": {
+    "name": "Costa Rican Volcanica",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 60.0,
+    "types": [3,4]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 7,
+  "fields": {
+    "name": "Camapara Mountain Coffee",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 21.0,
+    "types": [4,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 8,
+  "fields": {
+    "name": "Hawaii Kona Coffee",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 14.0,
+    "types": [3,2]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 9,
+  "fields": {
+    "name": "Sumatra Mandheling Coffee",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 24.0,
+    "types": [3,4]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 10,
+  "fields": {
+    "name": "Ethiopian Harrar Coffee",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 33.0,
+    "types": [1,2,3,4,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 11,
+  "fields": {
+    "name": "Panama Lowlands",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 21.0,
+    "types": [2,3,4]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 12,
+  "fields": {
+    "name": "Mocha Java Coffee.",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 60.0,
+    "types": [1,3,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 13,
+  "fields": {
+    "name": "Kenyan SL 34",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 33.0,
+    "types": [2,3,4]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 14,
+  "fields": {
+    "name": "Kenyan SL 28",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 28.0,
+    "types": [2,5]
+  }
+},
+{
+  "model": "coolbeansapp.product",
+  "pk": 15,
+  "fields": {
+    "name": "Ethiopian Yirgacheffe",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod  incididunt ut labore et dolore magna aliqua. Augue eget arcu dictum varius duis at. Facilisi etiam dignissim diam quis enim. ",
+    "image": "",
+    "price": 24.0,
+    "types": [1,3,4]
+  }
+},
+{
+  "model": "coolbeansapp.order",
+  "pk": 1,
+  "fields": {
+    "addressee": 2,
+    "date": "2023-01-11T21:32:58.614Z",
+    "status": "Pending"
+  }
+}
+]
