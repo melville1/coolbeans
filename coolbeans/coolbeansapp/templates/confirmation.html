@@ -10,35 +10,63 @@
     <div class="row">
       <div class="col text-center">
         <h1>Thank you {{order.addressee.name}}</h1>
-        <table class="table table-sm">
+        <div>
+          <table class="table table-sm">
           <tr>
-            <th>product</th>
-            <th>date</th>
-            <th>status</th>
-            <th>quantity</th>
+            <th>Product</th>
+            <!-- <th>date</th>
+            <th>status</th> -->
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Extended total</th>
           </tr>
+          
           {% for item in items %}
           <tr>
             <td>{{item.product}}</td>
             <td>{{item.quantity}}</td>
-            
+            <td>{{item.product.price}}0</td>
+            <td>{{item.get_total}}0</td>
+            <td> </td>
+            <td></td>
+
           </tr>
-          {% endfor %}
+          {%endfor%}
+          
+
+
         </table>
+        </div>
+        <tr>
+          {% for total in item_totals %}
+            <td>{{total}}</td>
+          {% endfor %}
+        </tr>
+        <tr>
+          <td></td>
+          <td> </td>
+          <td> </td>
+          
+           <td <h4> Order Total </h4> ${{order_price}}0  </td>
+          
+        </tr>
+        
 
         <form method="POST">
           {% csrf_token %}
           
-          {{ formset.as_p }}
-        
-        
-        <input type="submit" name="delete" value="Delete" /> 
+          
+      <a class="btn btn-primary btn-lg" href="{% url 'editorder' order.id %}">Edit Order</a>
+      <a class="btn btn-primary btn-lg" href="{% url 'receipt' order.id %}">Confirm Purchase</a>
+        <!--line 44 and 45 are different that the input tag delete button
+        the input delete takes you to the post of that view whereas the buttons from 
+      line 44 and 45 take you to the view (beginning at the "get")  -->
+      <input class="btn btn-primary btn-lg" type="submit" name="delete" value="Delete" /> 
       </form>
 
 
+    
         
-        <a class="btn btn-primary btn-lg" href="{% url 'receipt' order.id %}">Confirm Purchase</a>
-        <a class="btn btn-primary btn-lg" href="{% url 'editorder' order.id %}">Edit Order</a>
       </div>
     </div>
   </div>
