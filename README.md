@@ -1,11 +1,12 @@
 # CoolBeans - An example ecommerce website built on Django. 
 
-## A JTC Project built by The Undefined Variables: 
+## A JTC-WOW Project Built by The Undefined Variables: 
+
 -Mel Morel
 -Christopher Schreiber
 -Jon Wrenn
 
-### To start building the project
+### To start building the project, you must have python 3.x installed. 
 
 #### 1. Create a virtual environment
 
@@ -41,27 +42,30 @@ venv\Scripts\activate.bat
 pip install -r requirements.txt
 ```
 
-#### 4. Test the Server & Migrate to your sqlite Database
+#### 4. Test the Server
 
 ```bash
 cd coolbeans
-python manage.py runserver
+python manage.py runserver ipv4:port
 ```
 By default the server will run on :
 http://172.0.0.1:8000 if neither the ip or the port are set.
 Use Control-C to exit the server
+
+#### 5. Migrate Your Sqlite Database 
+
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-#### 5. Import Mock Data from a Fixture
+#### 6. Import Mock Data from a Fixture
 
 ```bash
 python manage.py loaddata coolbeansapp.json
 ```
 
-#### 6. Run the Server Again and Test Drive the App!
+#### 7. Run the Server Again and Test Drive the App!
 
 ```bash
 python manage.py runserver ipv4:port
