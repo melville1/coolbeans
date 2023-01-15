@@ -30,6 +30,7 @@ class OrderView(View):
     
         formset = OrderItemFormset()
         form = OrderForm()
+        
        
         html_data ={ 
             'formset':formset,
@@ -50,6 +51,7 @@ class OrderView(View):
         addressee = Addressee.objects.get(id=Customer) # retrieveing a specific addressee
         order = Order.objects.create(addressee=addressee)
         formset = OrderFormset(request.POST, instance=order)
+
         if formset.is_valid():
             formset.save()
         return redirect('confirmation', order.id )
@@ -162,3 +164,32 @@ class AboutView(View):
             template_name= "about.html",
             context= {}
         )
+
+class OrderHistoryView(View):
+    def get(self, request, id):
+         customer = Addressee.objects.get(id=id)
+         orders = Order.objects.filter(addressee=customer)
+         
+         
+         
+         context = {
+             'orders': orders,
+             'customer': customer,
+             
+         }
+         return render(
+             request=request,
+             template_name='order_history.html',
+             context= context
+         )
+
+class CustomerHistoryView(View):
+     def get(self, request):
+         customers = Addressee.objects.all()
+         return render(
+             request=request,
+             template_name='customer_names.html',
+             context={
+                 'customers': customers
+             }
+         )

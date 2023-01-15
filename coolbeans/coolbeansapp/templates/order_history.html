@@ -1,0 +1,38 @@
+{% extends 'main.html'%}
+{% block title %}
+    Orders
+{% endblock title %}
+{% block content %}
+<center>
+<h2> Order History </h2>
+
+<p>  </p>
+
+<div class="container">
+    <div class="row">
+      <div class="col text-center">
+        <h3>{{order.addressee}}</h3>
+        <table class="table table-sm">
+          <tr>
+            <th>number</th>
+            <th>date</th>
+            <th>status</th>
+            <th>total</th>
+          </tr>
+          {% for order in orders %}
+          <tr>
+            <td>{{order.id}}</td>
+            <td>{{order.date}}</td>
+            <td>{{order.status}}</td>
+            <td>{{order.get_total}}</td>
+            <td><a class="btn btn-primary btn-lg" href="{% url 'receipt' order.id %}">View</a></td>
+            
+          </tr>
+          {% endfor %}
+        </table>
+        
+      </div>
+    </div>
+  </div>
+</center>
+{% endblock%}
