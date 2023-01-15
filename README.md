@@ -1,10 +1,10 @@
-# CoolBeans - An example ecommerce website built on Django. 
+# CoolBeans - A Prototype E-commerce Website Built on Django. 
 
 ## A JTC-WOW Project Built by The Undefined Variables: 
 
--Mel Morel
--Christopher Schreiber
--Jon Wrenn
+- Mel Morel
+- Christopher Schreiber
+- Jon Wrenn
 
 ### To start building the project, you must have python 3.x installed. 
 
@@ -70,5 +70,6 @@ python manage.py loaddata coolbeansapp.json
 ```bash
 python manage.py runserver ipv4:port
 ```
+
 By default the server will run on :
 http://172.0.0.1:8000 if neither the ip or the port are set. 
