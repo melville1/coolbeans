@@ -50,8 +50,10 @@ pip install -r requirements.txt
 cd coolbeans
 python manage.py runserver ipv4:port
 ```
+
 By default the server will run on :
-http://172.0.0.1:8000 if neither the ip or the port are set.
+
+[LocalHost] http://127.0.0.1:8000 if neither the ip or the port are set.
 Use Control-C to exit the server
 
 #### 5. Migrate Your Sqlite Database 
@@ -74,4 +76,7 @@ python manage.py runserver ipv4:port
 ```
 
 By default the server will run on :
-http://172.0.0.1:8000 if neither the ip or the port are set. 
+
+http://127.0.0.1:8000 if neither the ip or the port are set. 
+
+
