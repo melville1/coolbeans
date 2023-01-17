@@ -32,6 +32,7 @@ class OrderView(View):
         # # the form will only contain attributes that are contain within orderitem table 
         formset = OrderItemFormset()
         form = OrderForm()
+        
        
         html_data ={ 
             'formset':formset,
@@ -52,16 +53,19 @@ class OrderView(View):
         addressee = Addressee.objects.get(id=Customer) # we are getting the addresse - a set up for the following line
         order = Order.objects.create(addressee=addressee) #order is created connecting it to the addressee
         formset = OrderFormset(request.POST, instance=order)
-         # we are calling the OrderItemFormset and filling it with the post data and then associating with the 
+
+        # we are calling the OrderItemFormset and filling it with the post data and then associating with the 
         # order from line 54 the "instance" in this case means associating with the order
         # what is happening here is that line 50 calls the form because the post needs it, then 
         # we get the adresse id this is the set up for the follwing line (52)because we will then 
         # create an order and associate it with the addressee and his/her info
         #line 54 then passes the data that was created from the addresse which was created in the post and associates 
         # to the order from line 53
+
         if formset.is_valid():
             formset.save()
         return redirect('confirmation', order.id )
+        
         # this redirects us to confirmation 
         # the second argument "create.id" grabs the id from the order it does this because an object was created
         # from line 53, therefore we not only access to the id but any other attribute that object may contain
@@ -178,3 +182,32 @@ class AboutView(View):
             template_name= "about.html",
             context= {}
         )
+
+class OrderHistoryView(View):
+    def get(self, request, id):
+         customer = Addressee.objects.get(id=id)
+         orders = Order.objects.filter(addressee=customer)
+         
+         
+         
+         context = {
+             'orders': orders,
+             'customer': customer,
+             
+         }
+         return render(
+             request=request,
+             template_name='order_history.html',
+             context= context
+         )
+
+class CustomerHistoryView(View):
+     def get(self, request):
+         customers = Addressee.objects.all()
+         return render(
+             request=request,
+             template_name='customer_names.html',
+             context={
+                 'customers': customers
+             }
+         )
