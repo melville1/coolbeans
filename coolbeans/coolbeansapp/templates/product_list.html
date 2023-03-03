@@ -1,46 +1,43 @@
 {% extends 'main.html' %}
 {% load static %}
-   {% block content %}
+{% block content %}
 
-   <div class="bg-image" style="background-image: url({% static 'austin-park-vbi3LFdaQtI-unsplash.jpg' %}); flex: 1 1 auto;">
-
-      <div class="text-black bg-white text-center">
-         <h1> Products </h1>
+   
+   
+<center>   
+<h1>CoolBeans Products </h1>
+<div class="container">
+   <div class="row">
+      <div class="col text-center">
+          {% comment %} Creating table fields {% endcomment %}
+          <table class="table table-sm">
+            <tr>
+               <th>Product Image:</th>
+               <th>Product Name:</th>
+               <th>Description:</th>
+               <th>Available to be roasted in:</th>
+               <th>Price:</th> 
+            </tr>
+            <hr> 
+            {% comment %} Iterate over object product_list and displaying what {% endcomment %}
+            {% for products in product_list %}   
+            <tr>   {% comment %} Using this as a place-holder as Imagefield requires enabling users/admin {% endcomment %}         
+               <td><img src="{% static 'mike-kenneally-TD4DBagg2wE-unsplash.jpg'%}" height="300px", width="400px"></td>
+               <td> {{ products.name }}</td>
+               <td> {{ products.description }}></td>
+               <td> 
+               {% comment %} Looping through the types from the many-to-many table "Tag" and only displaying items that match the product id.  Some products have 1, some will have 5. {% endcomment %}
+               {% for tag in products.types.all %}
+                 {{tag}} 
+               {% endfor %} </td>  
+               <td>${{ products.price }}0 per lb.</td>
+            </tr>   
+            {% endfor %}
+         </table>
       </div>
-      
-         <div class="container m-5">
-            <div class="flex-row">
-     
-      <ul style="text-decoration=none;"> <!-- Iterate over objec productt_list and displaying what -->
-         {% for products in product_list %}
-               <div class="m-5 px-5">
-                  <div class="card p-5n flex-row">
-                  <img class="card-img" src="{% static 'mike-kenneally-TD4DBagg2wE-unsplash.jpg'%}" height="300px", width="400px"> 
-                     <div class="card-body">
-                        <li><h2 class="card-title mb-5">{{ products.name }}<h2></li>
-                        <li><p class="card-text mx-5 "> {{ products.description }}></p></li>
-                        <div class="d-flex justify-content-around mt-3">
-
-                              <div class="d-flex justify-content-between card-footer">
-                                 <div class="p-2">
-                                    <div class="p-2">
-                                       <li> <h5 class="float-start">Available to be roasted in: </h5></li>
-                                       <span>
-                                       {% for tag in products.types.all %}
-                                          <label> {{tag}} </label>
-                                          {% endfor %}
-                                       </span> </li>   
-                                       <li><h5 class="float-end"> ${{ products.price }}0 per lb.</h5></li>
-                                    </div>
-                                 </div> 
-                              </div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div> 
-      {% endfor %}
-            </div>
-         </div>
-      </ul>
-   {% endblock %}
+   </div>
+</div>
+</center>     
+{% endblock %}
+                 
+            
